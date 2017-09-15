@@ -1,6 +1,7 @@
 var regex = {
   //General
   ls: /^ls$/,
+  pwd: /^pwd$/,
   clear: /^clear$|^cls$/,
   help: /^help$/,
   time: /^time$/,
@@ -8,6 +9,7 @@ var regex = {
   machine: /^machine/,
   reload: /^reload$|^re$/,
   credits: /^credits$/,
+  time: /^time$/,
   //URLs
   youtube: /^ytb$|^youtube$/i,
   openClassrooms: /^Oc$|^openclassrooms$/i,
@@ -37,6 +39,8 @@ function command(){
   else if (commandLine.match(regex.machine)){renameMachine(commandLine);}
   else if (commandLine.match(regex.reload)){reload();}
   else if (commandLine.match(regex.credits)){credits();}
+  else if (commandLine.match(regex.pwd)){pwd();}
+  else if (commandLine.match(regex.time)){time();}
 
   else if (commandLine.match(regex.youtube)){youtube();}
   else if (commandLine.match(regex.openClassrooms)){openClassrooms();}
@@ -106,9 +110,18 @@ function ls(){
 
 function clear(){
   var prompts = document.querySelectorAll("#prompt");
+  var output = document.querySelectorAll("#output");
   var l = prompts.length;
+
   for (i=0; i<l; i++){
     prompts[i].remove();
+  }
+
+  l = output.length;
+  if (l){
+    for (i=0; i<l; i++){
+      output[i].remove();
+    }
   }
 }
 
@@ -151,7 +164,6 @@ function credits(){
   txt +=      "</br>               -= code by TERRUSS =-";
   txt +=      "</br>                github.com/TERRUSS";
 
-  console.log(txt);
 
   var asw = document.createElement('p');
   asw.innerHTML = txt;
@@ -161,6 +173,35 @@ function credits(){
   var term = document.querySelector("#termContainer");
   term.appendChild(asw);
 }
+
+function pwd(){
+
+  var asw = document.createElement('p');
+  asw.innerHTML = ("Guess what? You'r currently in your navigator... !");
+  asw.setAttribute('class', 'text');
+  asw.setAttribute('id', 'output');
+
+  var term = document.querySelector("#termContainer");
+  term.appendChild(asw);
+}
+
+function time(){
+
+  var date = new Date();
+  var str_clock = "It's ";
+  str_clock += date.getHours();    //clock
+  str_clock += ':'+(date.getMinutes()<10?'0':'')+date.getMinutes();
+  str_clock += ':'+(date.getSeconds()<10?'0':'')+date.getSeconds();
+
+  var asw = document.createElement('p');
+  asw.setAttribute('class', 'text');
+  asw.setAttribute('id', 'output');
+  asw.appendChild(document.createTextNode(str_clock));
+
+  var term = document.querySelector('#termContainer');
+  term.appendChild(asw);
+}
+
 
 
   //URLs
@@ -177,7 +218,7 @@ window.open('https://www.facebook.com');
 }
 
 function messenger(){
-window.open('https://www.facebook.com/messages/');
+window.open('https://www.facebook.com/messages/t/');
 }
 
 function github(){

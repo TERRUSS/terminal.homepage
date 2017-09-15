@@ -2,6 +2,7 @@
 var user = 'user';
 var machine = 'local';
 var gitProfile = 'TERRUSS';
+var updownCount = 1;
 
   // Script
 
@@ -18,6 +19,24 @@ document.addEventListener('keydown', function(e){
     e.preventDefault();
 
     autocomplete();
+  }
+
+  if (e.keyCode == 38){
+    var inputs = document.querySelectorAll("#input");
+    var length = inputs.length;
+
+    updownCount++;
+
+    inputs[length-1].value = inputs[length - updownCount].value;
+  }
+
+  if (e.keyCode == 40){
+    inputs = document.querySelectorAll("#input");
+    var length = inputs.length;
+
+    updownCount--;
+
+    inputs[length-1].value = inputs[length - updownCount].value;
   }
 });
 
@@ -76,6 +95,7 @@ function newLine(){
 
   if (l>1){
     inputs[l-2].blur();
+    inputs[l-2].setAttribute('disabled', 'disabled');
   }
   inputs[l-1].focus();
 }
