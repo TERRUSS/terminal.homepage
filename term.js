@@ -1,6 +1,7 @@
   //Golbals
 var user = 'user';
 var machine = 'local';
+var gitProfile = 'TERRUSS';
 
   // Script
 

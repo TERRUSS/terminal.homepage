@@ -13,6 +13,7 @@ var regex = {
   openClassrooms: /^Oc$|^openclassrooms$/i,
   facebook: /^fb$|^facebook$/i,
   messenger: /^mesg$|^messenger$/i,
+  github: /git|github/i,
   //Search
   rYoutube: /-y/,
   rWikipedia: /-w/,
@@ -41,6 +42,7 @@ function command(){
   else if (commandLine.match(regex.openClassrooms)){openClassrooms();}
   else if (commandLine.match(regex.facebook)){facebook();}
   else if (commandLine.match(regex.messenger)){messenger();}
+  else if (commandLine.match(regex.github)){github();}
 
   else if (commandLine.match(regex.rYoutube)){rechercheYoutube(commandLine);}
   else if (commandLine.match(regex.rWikipedia)){rechercheWikipedia(commandLine);}
@@ -80,7 +82,8 @@ function ls(){
   var ls_url = [      'Youtube',
                       'Openclassrooms',
                       'Facebook',
-                      'Messenger'];
+                      'Messenger',
+                      'GitHub'];
 
   var ls_search = [   '[youtube] -y',
                       '[wikipedia] -w',
@@ -145,7 +148,8 @@ function credits(){
   txt +=      "     `--~`   ) )    .-'.'      '.'.  | (</br>";
   txt +=      "            (/`    ( (`          ) )  '-;</br>";
   txt +=      "             `      '-;         (-'</br>";
-  txt +=      "</br>               -= code by TERRUS =-"
+  txt +=      "</br>               -= code by TERRUSS =-";
+  txt +=      "</br>                github.com/TERRUSS";
 
   console.log(txt);
 
@@ -174,6 +178,10 @@ window.open('https://www.facebook.com');
 
 function messenger(){
 window.open('https://www.facebook.com/messages/');
+}
+
+function github(){
+  window.open('http://github.com/' + gitProfile);
 }
 
 
