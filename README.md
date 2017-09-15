@@ -37,6 +37,9 @@
   
   messenger/mesg
     facebook messenger
+    
+  github/git
+    access to http://github.com/gitProfile  (edit gitProfile in term.js)
   
   
 //research on websites : replace [x] by your query
