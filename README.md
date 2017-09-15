@@ -1,7 +1,7 @@
 # terminal.homepage
 
 <h1>terminal commands:</h1>
-
+<pre>
 //general
   ls
     list commands
@@ -46,4 +46,4 @@
   google trad : [x] -trad/-traduction
   google : [x] -g
   url : [x] -a/-url
-  
+</pre>
