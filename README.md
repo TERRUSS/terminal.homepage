@@ -1,6 +1,6 @@
 # terminal.homepage
 
-terminal commands:
+<h1>terminal commands:</h1>
 
 //general
   ls
