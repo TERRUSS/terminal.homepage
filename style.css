@@ -1,0 +1,83 @@
+.body{
+  background-color: #171515;
+}
+
+html {
+  background: url(background.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#termContainer{
+  display: block;
+  background-color: #000000;
+  padding-left: 50px;
+  border-style: solid;
+  border-left-color: transparent;
+  border-top-color: transparent;
+  opacity: 0.62;
+
+
+  position: absolute;
+  left:  10%;
+  right: 10%;
+  top: 5%;
+  bottom: 5%;
+
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+
+.text{
+  font-family: "Courier New", monospace;
+  color: #9F9F9F;
+  font-size: 15px;
+}
+
+#input{
+  display: inline;
+  background-color: transparent;
+  border: none;
+  margin-left: 0px;
+  width: 60%;
+  color: #757373;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#prompt{
+  font-weight: bold;
+
+}
+
+#output{
+  text-align: left;
+  margin-left: 50px;
+  font-weight:normal;
+  white-space: pre;
+}
+
+#header{
+  text-align: center;
+  margin-left: -50px;
+  font-size: 22px;
+}
+
+#date{
+  font-weight: lighter;
+  font-size: 13px;
+}
+
+#clock{
+}
+
+
+*:focus{
+  outline: none;
+}
+
+::-webkit-scrollbar{
+  display: none;
+}
