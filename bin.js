@@ -96,6 +96,8 @@ function ls(){
                       '[google] -g',
                       '[url] -a'];
 
+  window.termCommands = [ls_general, ls_url, ls_search];
+
   var asw = document.createElement('p');
   asw.setAttribute('id', 'output');
   asw.setAttribute('class', 'text');

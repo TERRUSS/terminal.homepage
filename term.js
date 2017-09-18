@@ -21,7 +21,7 @@ document.addEventListener('keydown', function(e){
     autocomplete();
   }
 
-  if (e.keyCode == 38){
+  if (e.keyCode == 38){ //up arrow
     var inputs = document.querySelectorAll("#input");
     var length = inputs.length;
 
@@ -30,13 +30,17 @@ document.addEventListener('keydown', function(e){
     inputs[length-1].value = inputs[length - updownCount].value;
   }
 
-  if (e.keyCode == 40){
-    inputs = document.querySelectorAll("#input");
+  if (e.keyCode == 40){ //down arrow
+    var inputs = document.querySelectorAll("#input");
     var length = inputs.length;
 
     updownCount--;
 
     inputs[length-1].value = inputs[length - updownCount].value;
+
+    if (updownCount == 1){
+      inputs[length-1].value = '';
+    }
   }
 });
 
