@@ -1,3 +1,4 @@
+
 var regex = {
   //General
   ls: /^ls$/,
@@ -10,6 +11,8 @@ var regex = {
   reload: /^reload$|^re$/,
   credits: /^credits$/,
   time: /^time$/,
+  exit: /^exit$/,
+  easteregg: /^42$/,
   //URLs
   youtube: /^ytb$|^youtube$/i,
   openClassrooms: /^Oc$|^openclassrooms$/i,
@@ -41,6 +44,8 @@ function command(){
   else if (commandLine.match(regex.credits)){credits();}
   else if (commandLine.match(regex.pwd)){pwd();}
   else if (commandLine.match(regex.time)){time();}
+  else if (commandLine.match(regex.exit)){exit();}
+  else if (commandLine.match(regex.easteregg)){easteregg();}
 
   else if (commandLine.match(regex.youtube)){youtube();}
   else if (commandLine.match(regex.openClassrooms)){openClassrooms();}
@@ -81,7 +86,8 @@ function ls(){
                       'help',
                       'name',
                       'machine',
-                      'reload'];
+                      'reload',
+                      'exit'];
 
   var ls_url = [      'Youtube',
                       'Openclassrooms',
@@ -204,27 +210,40 @@ function time(){
   term.appendChild(asw);
 }
 
+function exit(){
+  window.close();
+}
+
+
+function easteregg(){
+  document.querySelector('html').setAttribute('background', 'url(background42.jpg) no-repeat center center fixed');
+}
 
 
   //URLs
 function youtube(){
 window.open('https://www.youtube.com');
+exit();
 }
 
 function openClassrooms(){
 window.open('https://openclassrooms.com/courses');
+exit();
 }
 
 function facebook(){
 window.open('https://www.facebook.com');
+exit();
 }
 
 function messenger(){
 window.open('https://www.facebook.com/messages/t/');
+exit();
 }
 
 function github(){
   window.open('http://github.com/' + gitProfile);
+  exit();
 }
 
 
@@ -233,33 +252,39 @@ function rechercheYoutube(recherche){
   recherche = recherche.replace(' -y', '');
   recherche = recherche.replace(' ', '+');
   window.open('https://www.youtube.com/results?search_query=' + recherche);
+  exit();
 }
 
 function rechercheWikipedia(recherche){
   recherche = recherche.replace(' -w', '');
   recherche = recherche.replace(' ', '%20');
   window.open('https://www.wikiwand.com/fr/' + recherche);
+  exit();
 }
 
 function rechercheOpenClassrooms(recherche){
   recherche = recherche.replace(' -oc', '');
   recherche = recherche.replace(' ', '+');
   window.open('https://openclassrooms.com/courses?q=' + recherche);
+  exit();
 }
 
 function rechercheTrad(recherche){
   recherche = recherche.replace(/-trad|-traduction/i, '');
   recherche = recherche.replace(' ', '%20');
   window.open('https://translate.google.fr/#auto/' + recherche);
+  exit();
 }
 
 function rechercheGoogle(recherche){
   recherche = recherche.replace(/-g/, '');
   recherche = recherche.replace(' ', '+');
   window.open('http://google.fr/search?q=' + recherche);
+  exit();
 }
 
 function accesURL(url){
   url = url.replace(/ -a| -url/i, '');
   window.open('http://'+url);
+  exit();
 }
