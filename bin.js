@@ -14,18 +14,20 @@ var regex = {
   exit: /^exit$/,
   easteregg: /^42$/,
   //URLs
-  youtube: /^ytb$|^youtube$/i,
-  openClassrooms: /^Oc$|^openclassrooms$/i,
-  facebook: /^fb$|^facebook$/i,
-  messenger: /^mesg$|^messenger$/i,
-  github: /git|github/i,
+  youtube: /^ytb$|^youtube$|^ytb -nt$|^youtube -nt$/i,
+  openClassrooms: /^Oc$|^openclassrooms$|^Oc -nt$|^openclassrooms -nt$/i,
+  facebook: /^fb$|^facebook$|^fb -nt$|^facebook -nt$/i,
+  messenger: /^mesg$|^messenger$|^mesg -nt$|^messenger -nt$/i,
+  github: /^git$|^github$|^git -nt$|^github -nt$/i,
   //Search
-  rYoutube: /-y/,
-  rWikipedia: /-w/,
-  rOpenClassrooms: /-oc/,
-  rTrad: /-trad|-traduction/i,
-  rGoogle: /-g/i,
-  rURL: /-a|-url/i
+  rYoutube: / -y/,
+  rWikipedia: / -w/,
+  rOpenClassrooms: / -oc/,
+  rTrad: / -trad| -traduction/i,
+  rGoogle: / -g/i,
+  rURL: / -a| -url/i,
+  //Options
+  newTab: / -nt$/
 };
 
 
@@ -47,18 +49,18 @@ function command(){
   else if (commandLine.match(regex.exit)){exit();}
   else if (commandLine.match(regex.easteregg)){easteregg();}
 
-  else if (commandLine.match(regex.youtube)){youtube();}
-  else if (commandLine.match(regex.openClassrooms)){openClassrooms();}
-  else if (commandLine.match(regex.facebook)){facebook();}
-  else if (commandLine.match(regex.messenger)){messenger();}
-  else if (commandLine.match(regex.github)){github();}
+  else if (commandLine.match(regex.youtube)){youtube(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.openClassrooms)){openClassrooms(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.facebook)){facebook(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.messenger)){messenger(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.github)){github(commandLine, regex.newTab);}
 
-  else if (commandLine.match(regex.rYoutube)){rechercheYoutube(commandLine);}
-  else if (commandLine.match(regex.rWikipedia)){rechercheWikipedia(commandLine);}
-  else if (commandLine.match(regex.rOpenClassrooms)){rechercheOpenClassrooms(commandLine);}
-  else if (commandLine.match(regex.rTrad)){rechercheTrad(commandLine);}
-  else if (commandLine.match(regex.rGoogle)){rechercheGoogle(commandLine);}
-  else if (commandLine.match(regex.rURL)){accesURL(commandLine);}
+  else if (commandLine.match(regex.rYoutube)){rechercheYoutube(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.rWikipedia)){rechercheWikipedia(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.rOpenClassrooms)){rechercheOpenClassrooms(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.rTrad)){rechercheTrad(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.rGoogle)){rechercheGoogle(commandLine, regex.newTab);}
+  else if (commandLine.match(regex.rURL)){accesURL(commandLine, regex.newTab);}
 
   else if (commandLine == ""){}
   else{
@@ -221,70 +223,127 @@ function easteregg(){
 
 
   //URLs
-function youtube(){
+function youtube(recherche, newTab){
 window.open('https://www.youtube.com');
-exit();
+if (recherche.match(newTab)){
+    window.focus();}
+else{
+    exit();}
 }
 
-function openClassrooms(){
+function openClassrooms(recherche, newTab){
 window.open('https://openclassrooms.com/courses');
-exit();
+if (recherche.match(newTab)){
+    window.focus();}
+else{
+    exit();}
 }
 
-function facebook(){
+function facebook(recherche, newTab){
 window.open('https://www.facebook.com');
-exit();
+if (recherche.match(newTab)){
+    window.focus();}
+else{
+    exit();}
 }
 
-function messenger(){
+function messenger(recherche, newTab){
 window.open('https://www.facebook.com/messages/t/');
-exit();
+if (recherche.match(newTab)){
+    window.focus();}
+else{
+    exit();}
 }
 
-function github(){
+function github(recherche, newTab){
   window.open('http://github.com/' + gitProfile);
-  exit();
+  if (recherche.match(newTab)){
+      window.focus();}
+  else{
+      exit();}
 }
 
 
   //Search
-function rechercheYoutube(recherche){
+function rechercheYoutube(recherche, newTab){
+  var testNewTab=recherche.match(newTab)
+
   recherche = recherche.replace(' -y', '');
   recherche = recherche.replace(' ', '+');
+  recherche = recherche.replace('-nt', '');
+
   window.open('https://www.youtube.com/results?search_query=' + recherche);
-  exit();
+  if (testNewTab){
+      window.focus();}
+  else{
+      exit();}
 }
 
-function rechercheWikipedia(recherche){
+function rechercheWikipedia(recherche, newTab){
+  var testNewTab=recherche.match(newTab)
+
   recherche = recherche.replace(' -w', '');
   recherche = recherche.replace(' ', '%20');
+  recherche = recherche.replace('-nt', '');
+
   window.open('https://www.wikiwand.com/fr/' + recherche);
-  exit();
+  if (testNewTab){
+    window.focus();}
+  else{
+    exit();}
 }
 
-function rechercheOpenClassrooms(recherche){
+function rechercheOpenClassrooms(recherche, newTab){
+  var testNewTab=recherche.match(newTab)
+
   recherche = recherche.replace(' -oc', '');
   recherche = recherche.replace(' ', '+');
+  recherche = recherche.replace('-nt', '');
+
   window.open('https://openclassrooms.com/courses?q=' + recherche);
-  exit();
+  if (testNewTab){
+    window.focus();}
+  else{
+    exit();}
 }
 
-function rechercheTrad(recherche){
+function rechercheTrad(recherche, newTab){
+  var testNewTab=recherche.match(newTab)
+
   recherche = recherche.replace(/-trad|-traduction/i, '');
   recherche = recherche.replace(' ', '%20');
+  recherche = recherche.replace('-nt', '');
+
   window.open('https://translate.google.fr/#auto/' + recherche);
-  exit();
+  if (testNewTab){
+    window.focus();}
+  else{
+    exit();}
 }
 
-function rechercheGoogle(recherche){
+function rechercheGoogle(recherche, newTab){
+  var testNewTab=recherche.match(newTab)
+
   recherche = recherche.replace(/-g/, '');
   recherche = recherche.replace(' ', '+');
+  recherche = recherche.replace('-nt', '');
+
   window.open('http://google.fr/search?q=' + recherche);
-  exit();
+  if (testNewTab){
+    window.focus();}
+  else{
+    exit();}
 }
 
-function accesURL(url){
-  url = url.replace(/ -a| -url/i, '');
+function accesURL(url, newTab){
+  var testNewTab=url.match(newTab)
+
+  url = url.replace(/ -nt/i, '');
+  url = url.replace(/ -a| -url| -nt/i, '');
   window.open('http://'+url);
-  exit();
+
+  if (testNewTab){
+    window.focus();}
+  else{
+    exit();}
 }
