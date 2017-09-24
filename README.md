@@ -49,4 +49,9 @@
   google trad : [x] -trad/-traduction
   google : [x] -g
   url : [x] -a/-url
+  
+  
+//command options
+  -nt: open window in a new tab instead of the current one, appliable to all urls and search commands
+    (e.g.: "myresearch -y -nt")
 </pre>
