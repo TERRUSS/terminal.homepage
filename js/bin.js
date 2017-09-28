@@ -13,6 +13,7 @@ var regex = {
   time: /^time$/,
   exit: /^exit$/,
   easteregg: /^42$/,
+  note: /^note$/,
   //URLs
   youtube: /^ytb$|^youtube$|^ytb -nt$|^youtube -nt$/i,
   openClassrooms: /^Oc$|^openclassrooms$|^Oc -nt$|^openclassrooms -nt$/i,
@@ -48,6 +49,7 @@ function command(){
   else if (commandLine.match(regex.time)){time();}
   else if (commandLine.match(regex.exit)){exit();}
   else if (commandLine.match(regex.easteregg)){easteregg();}
+  else if (commandLine.match(regex.note)){note();}
 
   else if (commandLine.match(regex.youtube)){youtube(commandLine, regex.newTab);}
   else if (commandLine.match(regex.openClassrooms)){openClassrooms(commandLine, regex.newTab);}

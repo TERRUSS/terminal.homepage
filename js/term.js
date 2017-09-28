@@ -76,12 +76,20 @@ function init() {
 }
 
 
-function newLine(){
+function newLine(arg){
   //Creation of the new prompt line
+  var def = '<span>' + user + '@' + machine + ':~$ </span>';
+  var note = ' > ';
+
   var prompt = document.createElement('p');
   var input = document.createElement('input');
 
-  prompt.innerHTML = '<span>' + user + '@' + machine + ':~$ </span>';
+  if (!arg){
+    prompt.innerHTML = def;
+  }
+  else{
+    prompt.innerHTML = note;
+  }
   prompt.setAttribute('id', 'prompt');
   prompt.setAttribute('class', 'text');
   input.setAttribute('id', 'input');

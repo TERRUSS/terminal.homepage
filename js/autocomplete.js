@@ -4,7 +4,7 @@ function autocomplete(){
   var inputs = document.querySelectorAll('#input');
   var input = inputs[inputs.length-1];
 
-  console.log("star autocomplete()");
+  console.log("start autocomplete()");
 
   for (i in termCommands){
     for (j in termCommands[i]){
